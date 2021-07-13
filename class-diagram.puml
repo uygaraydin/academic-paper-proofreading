@@ -7,12 +7,13 @@
     + phone: String
     + department: String
     + title: String
+    + role: Role
     - identification_number: String
     - institutional_number: String
     + login(): this
     + getStatistics(): Statistics
     - controlUserRecord(User): Boolean
-    - addUser(User): this
+    - add(User): this
   }
   note left of User::getStatistics
     This method return general system
@@ -28,15 +29,20 @@
 
   class Translator {
     + upload(): Document
-    + addUserAsManually(User): User
-    + removeManuallyAddedUser(User): User
+    + addAsManually(User): User
+    + removeManuallyAdded(User): User
   }
 
   class Admin {
-    + editStaticPage(Page): Boolean
-    + changeUserRole(User): User
-    + deleteUser(User): User
+    + delete(User): User
+    + change_role(User): User
+    + edit(StaticPage): StaticPage
+    + add(Permission): Permission
+    + delete(Permission): Permission
+    + update(Permission): Permission
+    + update(Role): Role
   }
+
   class Statistics <<ValueObject>> {
     + total_document : Number
     + completed_document : Number
@@ -58,7 +64,15 @@
     + state: State
     + upload_ip: String
     + upload_date: Date
+  }
 
+  class Role <<Entity>> {
+    + name: String
+    + permissions: Permission[]
+  }
+
+  class Permission <<Entity>> {
+    + title: String
   }
 
   enum State {
@@ -72,8 +86,11 @@
   Academic -up-|> User
   Translator -up-|> User
   Admin -up-|> User
-  Academic *-- Document
-  Document --> State
+  Academic "1" *-- "0..n" Document : has >
+  Document "1" --> "1" State : has a >
+  Role "1" *-- "1" User : has a <
+  Role "1..n" o-- "1..n" Permission : has >
+  User "1" *-up- "1" Statistics : has >
 
 
 @enduml
