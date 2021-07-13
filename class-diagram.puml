@@ -1,96 +1,97 @@
 @startuml ATCS
 
-  class User <<Entity>> {
-    + name: String
-    + surname: String
-    + email: String
-    + phone: String
-    + department: String
-    + title: String
-    + role: Role
-    - identification_number: String
-    - institutional_number: String
-    + login(): this
-    + getStatistics(): Statistics
-    - controlUserRecord(User): Boolean
-    - add(User): this
-  }
-  note left of User::getStatistics
-    This method return general system
-    statistics if the user role is admin,
-    else return personal statistics
-  end note
+class User <<Entity>> {
+  + name: String
+  + surname: String
+  + email: String
+  + phone: String
+  + department: String
+  + title: String
+  + role: Role
+  - identification_number: String
+  - institutional_number: String
+  + login(): this
+  + getStatistics(): Statistics
+  - controlUserRecord(User): Boolean
+  - add(User): this
+}
+note left of User::getStatistics
+This method return general system
+statistics if the user role is admin,
+else return personal statistics
+end note
 
 
-  class Academic {
-    + documents: Document[]
-    + upload(Document): Document
-  }
+class Academic {
+  + documents: Document[]
+  + upload(Document): Document
+}
 
-  class Translator {
-    + upload(): Document
-    + addAsManually(User): User
-    + removeManuallyAdded(User): User
-  }
+class Translator {
+  + upload(): Document
+  + addAsManually(User): User
+  + removeManuallyAdded(User): User
+}
 
-  class Admin {
-    + delete(User): User
-    + change_role(User): User
-    + edit(StaticPage): StaticPage
-    + add(Permission): Permission
-    + delete(Permission): Permission
-    + update(Permission): Permission
-    + update(Role): Role
-  }
+class Admin {
+  + delete(User): User
+  + change_role(User): User
+  + edit(StaticPage): StaticPage
+  + add(Permission): Permission
+  + delete(Permission): Permission
+  + update(Permission): Permission
+  + update(Role): Role
+}
 
-  class Statistics <<ValueObject>> {
-    + total_document : Number
-    + completed_document : Number
-    + waiting_document : Number
-    + examining_document : Number
-    + rejected_document : Number
-  }
-  class StaticPage <<Entity>> {
-    + name : String
-    + title : String
-    + content : String
-  }
+class Statistics <<ValueObject>> {
+  + total_document : Number
+  + completed_document : Number
+  + waiting_document : Number
+  + examining_document : Number
+  + rejected_document : Number
+}
 
-  class Document <<Entity>> {
-    + original_name: String
-    + originla_file_url: String
-    + corrected_file_name: String
-    + corrected_file_url: String
-    + state: State
-    + upload_ip: String
-    + upload_date: Date
-  }
+class StaticPage <<Entity>> {
+  + name : String
+  + title : String
+  + content : String
+}
 
-  class Role <<Entity>> {
-    + name: String
-    + permissions: Permission[]
-  }
+class Document <<Entity>> {
+  + original_name: String
+  + originla_file_url: String
+  + corrected_file_name: String
+  + corrected_file_url: String
+  + state: State
+  + upload_ip: String
+  + upload_date: Date
+}
 
-  class Permission <<Entity>> {
-    + title: String
-  }
+class Role <<Entity>> {
+  + name: String
+  + permissions: Permission[]
+}
 
-  enum State {
-    WAITING
-    EXAMINING
-    REJECTED
-    READY_FOR_DOWNLOAD
-  }
+class Permission <<Entity>> {
+  + title: String
+}
+
+enum State {
+  WAITING
+  EXAMINING
+  REJECTED
+  READY_FOR_DOWNLOAD
+}
 
 
-  Academic -up-|> User
-  Translator -up-|> User
-  Admin -up-|> User
-  Academic "1" *-- "0..n" Document : has >
-  Document "1" --> "1" State : has a >
-  Role "1" *-- "1" User : has a <
-  Role "1..n" o-- "1..n" Permission : has >
-  User "1" *-up- "1" Statistics : has >
+Academic -up-|> User
+Translator -up-|> User
+Admin -up-|> User
+Academic "1" *-- "0..n" Document : has >
+Document "1" --> "1" State : has a >
+Role "1" *-- "1" User : has a <
+Role "1..n" o-- "1..n" Permission : has >
+User "1" *-up- "1" Statistics : has >
 
 
 @enduml
