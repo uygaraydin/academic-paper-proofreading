@@ -8,8 +8,8 @@ class User <<Entity>> {
   + department: String
   + title: String
   + role: Role
-  - identification_number: String
-  - institutional_number: String
+  - identificationNumber: String
+  - institutionalNumber: String
   + login(): this
   + getStatistics(): Statistics
   - controlUserRecord(User): Boolean
@@ -39,8 +39,8 @@ class Admin {
   + edit(StaticPage): StaticPage
   + add(Permission): Permission
   + delete(Permission): Permission
-  + update(Permission): Permission
-  + update(Role): Role
+  + updatePermmission(Permission): Permission
+  + updateRole(Role): Role
 }
 
 class Statistics <<ValueObject>> {
@@ -58,13 +58,11 @@ class StaticPage <<Entity>> {
 }
 
 class Document <<Entity>> {
-  + original_name: String
-  + originla_file_url: String
-  + corrected_file_name: String
-  + corrected_file_url: String
+  + originalName: String
+  + originlaFileUrl: String
+  + correctedFileName: String
+  + correctedFileUrl: String
   + state: State
-  + upload_ip: String
-  + upload_date: Date
 }
 
 class Role <<Entity>> {
