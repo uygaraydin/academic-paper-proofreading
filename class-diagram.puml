@@ -21,6 +21,7 @@ statistics if the user role is admin,
 else return personal statistics
 end note
 
+
 class Academic {
   + documents: Document[]
   + upload(Document): Document
