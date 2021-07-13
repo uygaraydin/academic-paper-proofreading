@@ -1,6 +1,6 @@
 @startuml ATCS
 
-class User <<Entity>> {
+  class User <<Entity>> {
     + name: String
     + surname: String
     + email: String
@@ -10,70 +10,70 @@ class User <<Entity>> {
     - identification_number: String
     - institutional_number: String
     + login(): this
-    + getStatistics(id?:int): Statistics
-    + controlUserRecord(): Boolean
-    + addUser(): this
-}
-note left of User::getStatistics
-  This method return general system
-  statistics if the user role is admin,
-  else return personal statistics
-end note
+    + getStatistics(): Statistics
+    - controlUserRecord(User): Boolean
+    - addUser(User): this
+  }
+  note left of User::getStatistics
+    This method return general system
+    statistics if the user role is admin,
+    else return personal statistics
+  end note
 
 
-class Academic {
-    + upload(): Document
-}
+  class Academic {
+    + documents: Document[]
+    + upload(Document): Document
+  }
 
-class Translator {
+  class Translator {
     + upload(): Document
     + addUserAsManually(User): User
     + removeManuallyAddedUser(User): User
-}
+  }
 
-class Admin {
-    + editStaticPage(id:int): Boolean
-    + changeUserRole(id:int): User
-    + deleteUser(id:int): User
-}
-class Statistics <<ValueObject>> {
+  class Admin {
+    + editStaticPage(Page): Boolean
+    + changeUserRole(User): User
+    + deleteUser(User): User
+  }
+  class Statistics <<ValueObject>> {
     + total_document : Number
     + completed_document : Number
     + waiting_document : Number
     + examining_document : Number
     + rejected_document : Number
-}
-class StaticPage <<Entity>> {
+  }
+  class StaticPage <<Entity>> {
     + name : String
     + title : String
     + content : String
-}
+  }
 
-class Document <<Entity>> {
+  class Document <<Entity>> {
     + original_name: String
     + originla_file_url: String
     + corrected_file_name: String
     + corrected_file_url: String
     + state: State
-    + academic: Academic
     + upload_ip: String
     + upload_date: Date
 
-}
+  }
 
-enum State {
+  enum State {
     WAITING
     EXAMINING
     REJECTED
     READY_FOR_DOWNLOAD
-}
+  }
 
 
-Academic -up-|> User
-Translator -up-|> User
-Admin -up-|> User
-Academic *-- Document
-Document --> State
+  Academic -up-|> User
+  Translator -up-|> User
+  Admin -up-|> User
+  Academic *-- Document
+  Document --> State
 
 
 @enduml
