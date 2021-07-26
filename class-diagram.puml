@@ -10,6 +10,7 @@ class User <<Entity>> {
   + role: Role
   - identificationNumber: String
   - institutionalNumber: String
+  + documents: Document[]
   + login(): this
   + getStatistics(): Statistics
   - controlUserRecord(User): Boolean
@@ -23,7 +24,6 @@ end note
 
 
 class Academic {
-  + documents: Document[]
   + upload(Document): Document
 }
 

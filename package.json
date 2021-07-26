@@ -1,0 +1,20 @@
+{
+  "name": "academic-text-correction",
+  "version": "1.0.0",
+  "description": "This system aims to academicians takes support about own academic publish from an official translator at own Institute.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uygaraydin/academic-text-correction.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uygaraydin/academic-text-correction/issues"
+  },
+  "homepage": "https://github.com/uygaraydin/academic-text-correction#readme"
+}
