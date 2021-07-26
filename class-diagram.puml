@@ -35,20 +35,28 @@ class Translator {
 
 class Admin {
   + delete(User): User
-  + change_role(User): User
+  + changeRole(User): User
   + edit(StaticPage): StaticPage
   + add(Permission): Permission
   + delete(Permission): Permission
   + updatePermmission(Permission): Permission
   + updateRole(Role): Role
+  + find(User): User[]
 }
 
 class Statistics <<ValueObject>> {
-  + total_document : Number
-  + completed_document : Number
-  + waiting_document : Number
-  + examining_document : Number
-  + rejected_document : Number
+  + totalDocument : Number
+  + completedDocument : Number
+  + waitingDocument : Number
+  + examiningDocument : Number
+  + rejectedDocument : Number
+}
+
+class Performans <<ValueObject>> {
+  + acceptedDocument : Number
+  + rejectedDocument : Number
+  + completedDocument : Number
+  + examiningDocument : Number
 }
 
 class StaticPage <<Entity>> {
@@ -90,6 +98,7 @@ Document "1" --> "1" State : has a >
 Role "1" *-- "1" User : has a <
 Role "1..n" o-- "1..n" Permission : has >
 User "1" *-up- "1" Statistics : has >
+Translator "1" *-- "1" Performans : has >
 
 
 @enduml
