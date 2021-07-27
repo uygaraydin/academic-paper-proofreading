@@ -15,6 +15,7 @@ class User <<Entity>> {
   + getStatistics(): Statistics
   - controlUserRecord(User): Boolean
   - add(User): this
+  + upload(Document): Document
 }
 note left of User::getStatistics
 This method return general system
@@ -22,15 +23,12 @@ statistics if the user role is admin,
 else return personal statistics
 end note
 
-
-class Academic {
-  + upload(Document): Document
-}
-
 class Translator {
-  + upload(): Document
+  + uploadCorrected(Document): Document
   + addAsManually(User): User
   + removeManuallyAdded(User): User
+  + find(searchKey): User[]
+  + getUserInfo(User): User
 }
 
 class Admin {
@@ -41,7 +39,8 @@ class Admin {
   + delete(Permission): Permission
   + updatePermmission(Permission): Permission
   + updateRole(Role): Role
-  + find(User): User[]
+  + find(searchKey): User[]
+  + getUserInfo(User): User
 }
 
 class Statistics <<ValueObject>> {
@@ -90,10 +89,9 @@ enum State {
 }
 
 
-Academic -up-|> User
 Translator -up-|> User
 Admin -up-|> User
-Academic "1" *-- "0..n" Document : has >
+User "1" *-- "0..n" Document : has >
 Document "1" --> "1" State : has a >
 Role "1" *-- "1" User : has a <
 Role "1..n" o-- "1..n" Permission : has >

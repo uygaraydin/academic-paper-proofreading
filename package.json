@@ -1,5 +1,5 @@
 {
-  "name": "academic-text-correction",
+  "name": "academic-paper-proofreading",
   "version": "1.0.0",
   "description": "This system aims to academicians takes support about own academic publish from an official translator at own Institute.",
   "main": "index.js",
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uygaraydin/academic-text-correction.git"
+    "url": "git+https://github.com/uygaraydin/academic-paper-proofreading.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/uygaraydin/academic-text-correction/issues"
+    "url": "https://github.com/uygaraydin/academic-paper-proofreading/issues"
   },
-  "homepage": "https://github.com/uygaraydin/academic-text-correction#readme"
+  "homepage": "https://github.com/uygaraydin/academic-paper-proofreading#readme"
 }
