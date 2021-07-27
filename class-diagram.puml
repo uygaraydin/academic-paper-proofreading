@@ -1,4 +1,9 @@
-@startuml ATCS
+@startuml APP
+
+class GeneralMethods {
+  + find(searchKey): User[]
+  + getUserInfo(User): User
+}
 
 class User <<Entity>> {
   + name: String
@@ -27,8 +32,6 @@ class Translator {
   + uploadCorrected(Document): Document
   + addAsManually(User): User
   + removeManuallyAdded(User): User
-  + find(searchKey): User[]
-  + getUserInfo(User): User
 }
 
 class Admin {
@@ -39,8 +42,6 @@ class Admin {
   + delete(Permission): Permission
   + updatePermmission(Permission): Permission
   + updateRole(Role): Role
-  + find(searchKey): User[]
-  + getUserInfo(User): User
 }
 
 class Statistics <<ValueObject>> {
