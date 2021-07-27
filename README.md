@@ -6,4 +6,4 @@ The user uploads the document that must review. The translator makes corrections
 Users and translators follow all these process on the system.
 
 ## Class Diagram of System
-![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/uygaraydin/academic-text-correction/main/class-diagram.puml)
+![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/uygaraydin/academic-paper-proofreading/main/class-diagram.puml)
