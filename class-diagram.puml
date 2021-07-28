@@ -65,7 +65,7 @@ class StaticPage <<Entity>> {
   + content : String
 }
 
-class Document <<Entity>> {
+class Document {
   + originalName: String
   + originlaFileUrl: String
   + correctedFileName: String
