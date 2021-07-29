@@ -1,5 +1,5 @@
 const BaseDatabase = require('./base-database')
-const Permission = require('../permission')
+const Permission = require('../models/permission')
 
 class PermissionDatabase extends BaseDatabase {
 

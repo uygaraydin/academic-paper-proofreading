@@ -4,7 +4,7 @@ const flatted = require('flatted')
 class BaseDatabase {
   constructor(model) {
     this.model = model
-    this.filename = model.name
+    this.filename = model.name.toLowerCase()
   }
 
   save(objects) {
@@ -31,8 +31,15 @@ class BaseDatabase {
   update(object) {
     const objects = this.load()
     const index = objects.findIndex(o => o.id == object.id)
+
+    if (index == -1) throw new Error(`Cannot find ${this.model.name} instance with id ${object.id}`)
+
     objects.splice(index, 1, object)
     this.save(objects)
+  }
+
+  findBy(property, value) {
+    return this.load().find(o => o[property] == value)
   }
 }
 

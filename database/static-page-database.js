@@ -1,5 +1,5 @@
 const BaseDatabase = require('./base-database')
-const StaticPage = require('../static-page')
+const StaticPage = require('../models/static-page')
 
 class StaticPageDatabase extends BaseDatabase {
 
