@@ -1,3 +1,6 @@
+const {UserDatabase} = require('./database/')
+
+
 class GeneralMethods {
   getRoles() {
     return {
@@ -7,9 +10,12 @@ class GeneralMethods {
     }
   }
 
+  findUserBy(id) {
+    return UserDatabase.findBy("id",id)
+  }
+
   findUser(searchKey) {
-    const results = []
-    return results
+    return UserDatabase.findBy("name",searchKey)
   }
 
   getStates() {

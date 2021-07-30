@@ -1,8 +1,9 @@
 const GeneralMethods = require('../general-methods')
-const Document = require('../models/document') 
+const Document =  require('./document')
+const Statistic =  require('./statistic')
 const uuid = require('uuid')
+// const generalMethods = new GeneralMethods()
 
-const generalMethods = new GeneralMethods()
 
 class User {
   #identificationNumber = null
@@ -19,19 +20,32 @@ class User {
     this.#identificationNumber = identificationNumber
     this.#institutionalNumber = institutionalNumber
     this.documents = documents
-    this.role = generalMethods.getRoles().USER
+    // this.role = generalMethods.getRoles().USER
   }
 
   login() {
+    loginServiceResponse = {
+      id: 233,
+      identificationNumber: "343244324324",
+      institutionalNumber: "776767777",
+    }
+
+    if (loginServiceResponse.id > 0) this.#controlUserRecord(loginServiceResponse) 
 
   }
 
-  getStatistics() {
-
+  getPersonalStatistics() {
+    const statistic = new Statistic()
+    statistic.totalDocument = this.documents.length || 0
+    statistic.waitingDocument = this.documents.filter(o => o.state == 1).length || 0
+    statistic.examiningDocument = this.documents.filter(o => o.state == 2).length || 0
+    statistic.rejectedDocument = this.documents.filter(o => o.state == 3).length || 0
+    statistic.completedDocument = this.documents.filter(o => o.state == 4).length || 0
+    return statistic
   }
 
-  #controlUserRecord(user) {
-    console.log(user)
+  #controlUserRecord(loginServiceResponse) {
+    console.log(loginServiceResponse)
   }
 
   #add(user) {
@@ -39,13 +53,13 @@ class User {
   }
 
   upload(file = null) {
-    file = {
-      "name": "test"
-    }
-    const state = generalMethods.getStates()
-    const document = new Document(file.name, `./file/${file.name}`, null, null, state.WAITING)
-    this.documents.push(document)
-    return document
+    // file = {
+    //   "name": "test"
+    // }
+    // const state = generalMethods.getStates()
+    // const document = new Document(file.name, `./file/${file.name}`, null, null, state.WAITING)
+    // this.documents.push(document)
+    // return document
   }
 
   static create({id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = []}) {

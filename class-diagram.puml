@@ -17,16 +17,11 @@ class User <<Entity>> {
   - institutionalNumber: String
   + documents: Document[]
   + login(): this
-  + getStatistics(): Statistics
+  + getPersonalStatistics(User): Statistics
   - controlUserRecord(User): Boolean
   - add(User): this
   + upload(Document): Document
 }
-note left of User::getStatistics
-This method return general system
-statistics if the user role is admin,
-else return personal statistics
-end note
 
 class Translator {
   + uploadCorrected(Document): Document
@@ -42,6 +37,7 @@ class Admin {
   + delete(Permission): Permission
   + updatePermmission(Permission): Permission
   + updateRole(Role): Role
+  + getStatistics(): Statistics
 }
 
 class Statistics <<ValueObject>> {
