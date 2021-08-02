@@ -48,7 +48,7 @@ class User {
     console.log(loginServiceResponse)
   }
 
-  #add(user) {
+  add(user) {
 
   }
 
