@@ -1,14 +1,15 @@
 const GeneralMethods = require('../general-methods')
-const Document =  require('./document')
-const Statistic =  require('./statistic')
+const Document = require('./document')
+const Statistic = require('./statistic')
 const uuid = require('uuid')
+const UserDatabase = require('../database/user-database')
 // const generalMethods = new GeneralMethods()
 
 
 class User {
   #identificationNumber = null
   #institutionalNumber = null
-  
+
   constructor(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = []) {
     this.id = id || uuid.v4()
     this.name = name
@@ -24,13 +25,16 @@ class User {
   }
 
   login() {
+    user = null
     loginServiceResponse = {
       id: 233,
       identificationNumber: "343244324324",
       institutionalNumber: "776767777",
     }
 
-    if (loginServiceResponse.id > 0) this.#controlUserRecord(loginServiceResponse) 
+    if (loginServiceResponse.id > 0) user = this.controlUserRecord(loginServiceResponse)
+
+    return user == null ? this.add(loginServiceResponse) : user
 
   }
 
@@ -44,12 +48,13 @@ class User {
     return statistic
   }
 
-  #controlUserRecord(loginServiceResponse) {
-    console.log(loginServiceResponse)
+  controlUserRecord(loginServiceResponse) {
+    return userDatabase.findUserByIdentificationNumber(loginServiceResponse.identificationNumber)
   }
 
-  add(user) {
-
+  add(loginServiceResponse) {
+    const user = this.create(loginServiceResponse)
+    return UserDatabase.insert(user)
   }
 
   upload(file = null) {
@@ -62,7 +67,7 @@ class User {
     // return document
   }
 
-  static create({id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = []}) {
+  static create({ id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = [] }) {
     return new User(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents)
   }
 }
