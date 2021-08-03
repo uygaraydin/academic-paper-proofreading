@@ -1,9 +1,10 @@
-const GeneralMethods = require('../general-methods')
 const Document = require('./document')
 const Statistic = require('./statistic')
 const uuid = require('uuid')
-const UserDatabase = require('../database/user-database')
-// const generalMethods = new GeneralMethods()
+const userDatabase = require('../database/user-database')
+const roleDatabase = require('../database/role-database')
+
+
 
 
 class User {
@@ -21,7 +22,7 @@ class User {
     this.#identificationNumber = identificationNumber
     this.#institutionalNumber = institutionalNumber
     this.documents = documents
-    // this.role = generalMethods.getRoles().USER
+    this.role = roleDatabase.getRoles().USER
   }
 
   login() {
@@ -54,17 +55,17 @@ class User {
 
   add(loginServiceResponse) {
     const user = this.create(loginServiceResponse)
-    return UserDatabase.insert(user)
+    return userDatabase.insert(user)
   }
 
   upload(file = null) {
-    // file = {
-    //   "name": "test"
-    // }
-    // const state = generalMethods.getStates()
-    // const document = new Document(file.name, `./file/${file.name}`, null, null, state.WAITING)
-    // this.documents.push(document)
-    // return document
+    file = {
+      "name": "test"
+    }
+    const state = generalMethods.getStates()
+    const document = new Document(file.name, `./file/${file.name}`, null, null, state.WAITING)
+    this.documents.push(document)
+    return document
   }
 
   static create({ id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = [] }) {

@@ -1,6 +1,6 @@
-const UserDatabase = require('./user-database')
-const RoleDatabase = require('./role-database')
-const PermissionDatabase = require('./permission-database')
-const StaticPageDatabase = require('./static-page-database')
+const userDatabase = require('./user-database')
+const roleDatabase = require('./role-database')
+const permissionDatabase = require('./permission-database')
+const staticPageDatabase = require('./static-page-database')
 
-module.exports = {UserDatabase, RoleDatabase, PermissionDatabase, StaticPageDatabase}
+module.exports = {userDatabase, roleDatabase, permissionDatabase, staticPageDatabase}
