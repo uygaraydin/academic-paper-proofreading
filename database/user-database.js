@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const { User } = require("../models")
 const BaseDatabase = require("./base-database");
 
 class UserDatabase extends BaseDatabase {
@@ -12,11 +12,6 @@ class UserDatabase extends BaseDatabase {
 
   findUserByIdentificationNumber(num) {
     return this.findBy("identificationNumber", num);
-  }
-
-  getUserInfo(user) {
-    const results = [];
-    return results;
   }
 }
 

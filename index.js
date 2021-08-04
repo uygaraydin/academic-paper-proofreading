@@ -1,6 +1,5 @@
-const User = require('./models/user')
-const {userDatabase, roleDatabase} = require('./database/')
-
+const { userDatabase, roleDatabase } = require('./database/')
+const { User } = require("./models")
 
 const role = roleDatabase.getRoles()
 
@@ -9,3 +8,4 @@ const saygin = User.create({name: "saygin", surname: "aydin", email: "uygar.aydi
 
 const user = userDatabase.findUser("uygar")
 console.log(user.getPersonalStatistics())
+

@@ -1,14 +1,10 @@
-const User = require("./user")
-const Statistic = require('./statistic')
-const {UserDatabase, RoleDatabase} = require('./database/')
-
-
-const generalMethods = new GeneralMethods()
+const { User, Statistic } = require("./")
+const { userDatabase, roleDatabase } = require('../database/')
 
 class Admin extends User {
   constructor(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = []) {
     super(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents)
-    this.role = RoleDatabase.getRoles()
+    this.role = roleDatabase.getRoles()
   }
 
   delete(user) {

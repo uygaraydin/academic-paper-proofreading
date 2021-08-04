@@ -1,9 +1,6 @@
-const Document = require('./document')
-const Statistic = require('./statistic')
+const { Document, Statistic } = require("./")
+const { userDatabase, roleDatabase } = require('../database/')
 const uuid = require('uuid')
-const userDatabase = require('../database/user-database')
-const roleDatabase = require('../database/role-database')
-
 
 
 
@@ -70,6 +67,11 @@ class User {
 
   static create({ id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = [] }) {
     return new User(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents)
+  }
+
+  getUserInfo() {
+    const results = [];
+    return results;
   }
 }
 
