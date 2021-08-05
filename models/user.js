@@ -1,5 +1,4 @@
-const { Document, Statistic } = require("./")
-const { userDatabase, roleDatabase } = require('../database/')
+const getRoles = require('../lib/get-roles')
 const uuid = require('uuid')
 
 
@@ -19,59 +18,16 @@ class User {
     this.#identificationNumber = identificationNumber
     this.#institutionalNumber = institutionalNumber
     this.documents = documents
-    this.role = roleDatabase.getRoles().USER
+    this.role = getRoles().USER
   }
 
-  login() {
-    user = null
-    loginServiceResponse = {
-      id: 233,
-      identificationNumber: "343244324324",
-      institutionalNumber: "776767777",
-    }
-
-    if (loginServiceResponse.id > 0) user = this.controlUserRecord(loginServiceResponse)
-
-    return user == null ? this.add(loginServiceResponse) : user
-
-  }
-
-  getPersonalStatistics() {
-    const statistic = new Statistic()
-    statistic.totalDocument = this.documents.length || 0
-    statistic.waitingDocument = this.documents.filter(o => o.state == 1).length || 0
-    statistic.examiningDocument = this.documents.filter(o => o.state == 2).length || 0
-    statistic.rejectedDocument = this.documents.filter(o => o.state == 3).length || 0
-    statistic.completedDocument = this.documents.filter(o => o.state == 4).length || 0
-    return statistic
-  }
-
-  #controlUserRecord = loginServiceResponse => {
-    return userDatabase.findUserByIdentificationNumber(loginServiceResponse.identificationNumber)
-  }
-
-  #add = loginServiceResponse => {
-    const user = this.create(loginServiceResponse)
-    return userDatabase.insert(user)
-  }
-
-  upload(file = null) {
-    file = {
-      "name": "test"
-    }
-    const state = generalMethods.getStates()
-    const document = new Document(file.name, `./file/${file.name}`, null, null, state.WAITING)
+  upload(document) {
     this.documents.push(document)
     return document
   }
 
   static create({ id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = [] }) {
     return new User(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents)
-  }
-
-  getUserInfo() {
-    const results = [];
-    return results;
   }
 }
 
