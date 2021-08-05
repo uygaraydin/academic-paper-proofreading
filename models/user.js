@@ -46,11 +46,11 @@ class User {
     return statistic
   }
 
-  controlUserRecord(loginServiceResponse) {
+  #controlUserRecord = loginServiceResponse => {
     return userDatabase.findUserByIdentificationNumber(loginServiceResponse.identificationNumber)
   }
 
-  add(loginServiceResponse) {
+  #add = loginServiceResponse => {
     const user = this.create(loginServiceResponse)
     return userDatabase.insert(user)
   }
