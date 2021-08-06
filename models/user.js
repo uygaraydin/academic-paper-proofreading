@@ -25,10 +25,6 @@ class User {
     this.documents.push(document)
     return document
   }
-
-  static create({ id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = [] }) {
-    return new User(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents)
-  }
 }
 
 module.exports = User

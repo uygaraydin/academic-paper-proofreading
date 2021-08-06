@@ -7,10 +7,6 @@ class Admin extends User {
     super(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents)
     this.role = getRoles().ADMIN
   }
-
-  static create({ id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = [] }) {
-    return new Admin(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents)
-  }
 }
 
 module.exports = Admin
