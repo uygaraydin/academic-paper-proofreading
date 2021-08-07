@@ -1,5 +1,6 @@
 const fs = require('fs')
 const flatted = require('flatted')
+const createModelFromObject = require("../lib/create-model-from-object");
 
 class BaseDatabase {
   constructor(model) {
@@ -14,7 +15,7 @@ class BaseDatabase {
   load() {
     const file = fs.readFileSync(`./${this.filename}.json`, 'utf8')
     const objects = flatted.parse(file)
-    return objects.map(this.model.create)
+    return objects.map(createModelFromObject)
   }
 
   insert(object) {

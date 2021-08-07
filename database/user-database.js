@@ -1,5 +1,6 @@
 const { User, Statistic } = require("../models");
 const BaseDatabase = require("./base-database");
+const createModelFromObject = require("../lib/create-model-from-object");
 
 class UserDatabase extends BaseDatabase {
 
@@ -40,11 +41,11 @@ class UserDatabase extends BaseDatabase {
   }
 
   #controlUserRecord = loginServiceResponse => {
-    return userDatabase.findUserByIdentificationNumber(loginServiceResponse.identificationNumber)
+    return this.findUserByIdentificationNumber(loginServiceResponse.identificationNumber)
   }
 
   #addFromService = loginServiceResponse => {
-    const user = this.create(loginServiceResponse)
+    const user = createModelFromObject(loginServiceResponse)
     return userDatabase.insert(user)
   }
 }
