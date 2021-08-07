@@ -1,10 +1,5 @@
 @startuml APP
 
-class GeneralMethods {
-  + find(searchKey): User[]
-  + getUserInfo(User): User
-}
-
 class User <<Entity>> {
   + name: String
   + surname: String
