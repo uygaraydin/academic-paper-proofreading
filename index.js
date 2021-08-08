@@ -8,4 +8,6 @@ const getRoles = require("./lib/get-roles")
 
 // const user = userDatabase.findUser("uygar")
 
-const uygar = createModelFromObject({ name: "uygar", surname: "aydin", email: "uygar.aydin@erdogan.edu.tr", phone: "23213", department: "Bilgi İşlem Daire Başkanlığı", title: "Öğr. Gör.", identificationNumber: "11", institutionalNumber: "22", role: getRoles().TRANSLATOR })
+const rashad = createModelFromObject({ name: "Rashad", surname: "Monahan", email: "Alanis_Senger60@hotmail.com", phone: "751-657-6651", department: "Bilgi İşlem Daire Başkanlığı", title: "Dynamic Markets Representative", identificationNumber: "11", institutionalNumber: "22", role: getRoles().ADMIN })
+
+console.log(rashad)
