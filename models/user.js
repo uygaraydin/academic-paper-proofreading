@@ -20,11 +20,6 @@ class User {
     this.documents = documents
     this.role = getRoles().USER
   }
-
-  upload(document) {
-    this.documents.push(document)
-    return document
-  }
 }
 
 module.exports = User

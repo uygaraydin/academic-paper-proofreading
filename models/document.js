@@ -1,10 +1,14 @@
 class Document {
-  constructor(originalName, originlaFileUrl, correctedFileName = null, correctedFileUrl = null, state) {
-    this.originalName = originalName
-    this.originlaFileUrl = originlaFileUrl
-    this.correctedFileName = correctedFileName
-    this.correctedFileUrl = correctedFileUrl
+  constructor(name, url, correctedFile = null, state) {
+    this.name = name
+    this.url = url
+    this.correctedFile = correctedFile
     this.state = state
+  }
+
+  uploadCorrectedFile(document) {
+    this.correctedFile.push(document)
+    return document
   }
 }
 

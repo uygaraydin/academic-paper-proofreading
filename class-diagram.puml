@@ -56,12 +56,13 @@ class StaticPage <<Entity>> {
   + content : String
 }
 
-class Document {
-  + originalName: String
-  + originlaFileUrl: String
-  + correctedFileName: String
-  + correctedFileUrl: String
+class Document <<Entity>> {
+  + user_id: String
+  + name: String
+  + url: String
+  + correctedFile: Document
   + state: State
+  + uploadCorrectedFile(Document): Document
 }
 
 class Role <<Entity>> {
@@ -85,6 +86,7 @@ Translator -up-|> User
 Admin -up-|> User
 User "1" *-- "0..n" Document : has >
 Document "1" --> "1" State : has a >
+Document "1" *-- "1" Document : has a >
 Role "1" *-- "1" User : has a <
 Role "1..n" o-- "1..n" Permission : has >
 User "1" *-up- "1" Statistics : has >
