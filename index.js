@@ -10,4 +10,8 @@ const getRoles = require("./lib/get-roles")
 
 const rashad = createModelFromObject({ name: "Rashad", surname: "Monahan", email: "Alanis_Senger60@hotmail.com", phone: "751-657-6651", department: "Bilgi İşlem Daire Başkanlığı", title: "Dynamic Markets Representative", identificationNumber: "11", institutionalNumber: "22", role: getRoles().ADMIN })
 
-console.log(rashad)
+
+const userr = userDatabase.findUserById('752f0723-b820-41e2-a459-64f366c33867')
+console.log(userr)
+
+console.log(userDatabase.getPersonalStatistics(userr))

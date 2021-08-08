@@ -1,10 +1,11 @@
-const { User, Statistic } = require("../models");
-const BaseDatabase = require("./base-database");
-const createModelFromObject = require("../lib/create-model-from-object");
+const { User, Statistic } = require('../models');
+const BaseDatabase = require('./base-database');
+const createModelFromObject = require('../lib/create-model-from-object');
+const getStates = require('../lib/get-states');
 
 class UserDatabase extends BaseDatabase {
 
-  findUserBy(id) {
+  findUserById(id) {
     return this.findBy("id", id);
   }
 
@@ -30,13 +31,13 @@ class UserDatabase extends BaseDatabase {
 
   }
 
-  getPersonalStatistics() {
+  getPersonalStatistics(user) {
     const statistic = new Statistic()
-    statistic.totalDocument = this.documents.length || 0
-    statistic.waitingDocument = this.documents.filter(o => o.state == 1).length || 0
-    statistic.examiningDocument = this.documents.filter(o => o.state == 2).length || 0
-    statistic.rejectedDocument = this.documents.filter(o => o.state == 3).length || 0
-    statistic.completedDocument = this.documents.filter(o => o.state == 4).length || 0
+    statistic.totalDocument = user.documents.length || 0
+    statistic.waitingDocument = user.documents.filter(o => o.state == getStates().WAITING).length || 0
+    statistic.examiningDocument = user.documents.filter(o => o.state == getStates().EXAMINING).length || 0
+    statistic.rejectedDocument = user.documents.filter(o => o.state == getStates().REJECTED).length || 0
+    statistic.completedDocument = user.documents.filter(o => o.state == getStates().READY_FOR_DOWNLOAD).length || 0
     return statistic
   }
 
