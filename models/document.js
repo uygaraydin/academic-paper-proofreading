@@ -1,5 +1,6 @@
 class Document {
-  constructor(name, url, correctedFile = null, state) {
+  constructor(name, url, correctedFile = null, state, user_id) {
+    this.user_id = user_id
     this.name = name
     this.url = url
     this.correctedFile = correctedFile
