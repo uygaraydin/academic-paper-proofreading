@@ -7,7 +7,7 @@ class User {
   #identificationNumber = null
   #institutionalNumber = null
 
-  constructor(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = []) {
+  constructor(id, name, surname, email, phone, department, title, identificationNumber, institutionalNumber, documents = [], role) {
     this.id = id || uuid.v4()
     this.name = name
     this.surname = surname
@@ -18,7 +18,7 @@ class User {
     this.#identificationNumber = identificationNumber
     this.#institutionalNumber = institutionalNumber
     this.documents = documents
-    this.role = getRoles().USER
+    this.role = role
   }
 }
 

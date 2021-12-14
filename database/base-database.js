@@ -1,6 +1,6 @@
 const fs = require('fs')
 const flatted = require('flatted')
-const createModelFromObject = require("../lib/create-model-from-object");
+const createModelFromObject = require("../lib/create-user-model-from-object-by-role");
 
 class BaseDatabase {
   constructor(model) {
