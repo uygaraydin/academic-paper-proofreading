@@ -1,15 +1,11 @@
+const uuid = require('uuid')
 class Document {
-  constructor(name, url, correctedFile = null, state, user_id) {
-    this.user_id = user_id
+  constructor({ id, name, url, correctedFile = null, state = 'True' }) {
+    this.id = id || uuid.v4()
     this.name = name
     this.url = url
     this.correctedFile = correctedFile
     this.state = state
-  }
-
-  uploadCorrectedFile(document) {
-    this.correctedFile.push(document)
-    return document
   }
 }
 

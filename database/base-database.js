@@ -1,6 +1,6 @@
 const fs = require('fs')
 const flatted = require('flatted')
-const createModelFromObject = require("../lib/create-user-model-from-object-by-role");
+const createUserModelFromObjectByRole = require("../lib/create-user-model-from-object-by-role");
 
 class BaseDatabase {
   constructor(model) {
@@ -15,7 +15,7 @@ class BaseDatabase {
   load() {
     const file = fs.readFileSync(`./${this.filename}.json`, 'utf8')
     const objects = flatted.parse(file)
-    return objects.map(createModelFromObject)
+    return objects.map(createUserModelFromObjectByRole)
   }
 
   insert(object) {

@@ -1,4 +1,5 @@
 const getRoles = require('../lib/get-roles')
+const Document = require('./document')
 const uuid = require('uuid')
 
 
@@ -20,6 +21,21 @@ class User {
     this.documents = documents
     this.role = role
   }
+
+  uploadFile(file) {
+    const document = new Document({ name: file.name, url: file.url })
+    this.documents.push(document)
+    return document.id
+  }
+
+  uploadCorrectedFile(id, file) {
+    const index = this.documents.findIndex(o => o.id == id)
+    const document = this.documents[index]
+    const correctedDocument = new Document({ name: file.name, url: file.url })
+    document.correctedFile = correctedDocument
+    return document
+  }
+
 }
 
 module.exports = User

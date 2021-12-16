@@ -1,70 +1,38 @@
 [[
   "1",
-  "2",
-  "3",
-  "4"
+  "2"
 ],{
-  "id": "5",
-  "name": "6",
-  "surname": "7",
-  "email": "8",
-  "phone": "9",
-  "department": "10",
-  "title": "11",
+  "id": "3",
+  "name": "4",
+  "surname": "5",
+  "email": "6",
+  "phone": "7",
+  "department": "8",
+  "title": "9",
+  "documents": "10",
+  "role": 1
+},{
+  "id": "11",
+  "name": "4",
+  "surname": "5",
+  "email": "6",
+  "phone": "7",
+  "department": "8",
+  "title": "9",
   "documents": "12",
   "role": 1
-},{
-  "id": "13",
-  "name": "14",
-  "surname": "7",
-  "email": "8",
-  "phone": "9",
-  "department": "10",
-  "title": "11",
-  "documents": "15",
-  "role": 1
-},{
-  "id": "16",
-  "name": "14",
-  "surname": "7",
-  "email": "8",
-  "phone": "9",
-  "department": "10",
-  "title": "11",
-  "documents": "17",
-  "role": 1
-},{
-  "id": "18",
-  "name": "19",
-  "surname": "7",
-  "email": "8",
-  "phone": "9",
-  "department": "10",
-  "title": "11",
-  "documents": "20",
-  "role": 1
-},"9d0f72f8-5297-499a-9ea7-acb99b0bcebb","saygin","aydin","uygar.aydin@erdogan.edu.tr","23213","Bilgi İşlem Daire Başkanlığı","Öğr. Gör.",[],"752f0723-b820-41e2-a459-64f366c33867","uygar",[
-  "21"
-],"d76a912a-96ed-4ee5-856e-adf0a9b33cca",[
-  "22"
-],"2bdb1c3f-7451-4853-816e-3fb1d1085325","musa",[
-  "23"
-],{
-  "originalName": "24",
-  "originlaFileUrl": "25",
-  "correctedFileName": null,
-  "correctedFileUrl": null,
-  "state": 1
-},{
-  "originalName": "24",
-  "originlaFileUrl": "25",
-  "correctedFileName": null,
-  "correctedFileUrl": null,
-  "state": 1
-},{
-  "originalName": "24",
-  "originlaFileUrl": "25",
-  "correctedFileName": null,
-  "correctedFileUrl": null,
-  "state": 1
-},"test","./file/test"]
+},"8d60821d-a1ec-45c7-b89b-d70ee3bb1f91","Rashad","Monahan","Alanis_Senger60@hotmail.com","751-657-6651","Bilgi İşlem Daire Başkanlığı","Dynamic Markets Representative",[
+  "13"
+],"ffdd74a1-99c5-462b-b9cc-035083096596",[],{
+  "id": "14",
+  "name": "15",
+  "url": "16",
+  "correctedFile": "17",
+  "state": "18"
+},"2c04f3b9-09a1-48df-b3cb-913bdd133fe3","test.docx","../uploads/docs/test.docx",{
+  "id": "19",
+  "name": "20",
+  "url": "21",
+  "correctedFile": null,
+  "state": "18"
+},"True","de38b7b6-26b7-4283-9eaa-bcb9c0c61109","testC.docx","../uploads/docs/testC.docx"]

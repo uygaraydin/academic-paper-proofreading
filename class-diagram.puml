@@ -15,13 +15,13 @@ class User <<Entity>> {
   + getPersonalStatistics(User): Statistics
   - controlUserRecord(User): Boolean
   - add(User): this
-  + upload(Document): Document
+  + upload(File): Document
 }
 
 class Translator {
-  + uploadCorrected(Document): Document
   + addAsManually(User): User
   + removeManuallyAdded(User): User
+  + uploadCorrectedFile(id, File): Document
 }
 
 class Admin {
@@ -57,12 +57,11 @@ class StaticPage <<Entity>> {
 }
 
 class Document <<Entity>> {
-  + user_id: String
   + name: String
   + url: String
   + correctedFile: Document
   + state: State
-  + uploadCorrectedFile(Document): Document
+  + uploader: User
 }
 
 class Role <<Entity>> {
@@ -85,6 +84,7 @@ enum State {
 Translator -up-|> User
 Admin -up-|> User
 User "1" *-- "0..n" Document : has >
+User "1" *-up- "1" Document : has >
 Document "1" --> "1" State : has a >
 Document "1" *-- "1" Document : has a >
 Role "1" *-- "1" User : has a <
