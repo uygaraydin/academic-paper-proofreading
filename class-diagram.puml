@@ -11,11 +11,14 @@ class User <<Entity>> {
   - identificationNumber: String
   - institutionalNumber: String
   + documents: Document[]
-  + login(): this
   + getPersonalStatistics(User): Statistics
-  - controlUserRecord(User): Boolean
-  - add(User): this
   + upload(File): Document
+}
+
+class Login {
+  + login(): User
+  - controlUserRecord(User): Boolean
+  - add(User): User
 }
 
 class Translator {
